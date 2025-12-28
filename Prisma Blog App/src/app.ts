@@ -1,11 +1,13 @@
-import express, { Application } from "express";
-import { postRouter } from "./modules/post/post.routes";
+import express, { type Application } from "express";
+import { PostRouter } from "./modules/post/post.router";
+import { getRouter } from "./modules/get/get.router";
 
-const app:Application = express();
+const app: Application = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.use("/posts", postRouter);
+app.use("/posts", PostRouter);
+app.use("/posts", getRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
